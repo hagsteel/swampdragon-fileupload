@@ -7,7 +7,7 @@ def read(fname):
 
 setup(
     name="SwampDragon-fileupload",
-    version="0.1.0",
+    version="0.1.1",
     author="Jonas Hagstedt",
     author_email="hagstedt@gmail.com",
     description=("File upload handler for SwampDragon"),

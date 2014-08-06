@@ -10,11 +10,11 @@ class FileUploadHandler(RequestHandler):
 
     def _set_access_control(self):
         origin = self.request.headers['origin']
-        orig_test = origin.split('/')[-1]
-        if ':' in orig_test:
-            orig_test = orig_test.split(':')[0]
-        if not self.request.host.split(':')[0] == orig_test:
-            return
+        # orig_test = origin.split('/')[-1]
+        # if ':' in orig_test:
+        #     orig_test = orig_test.split(':')[0]
+        # if not self.request.host.split(':')[0] == orig_test:
+        #     return
         self.set_header('Access-Control-Allow-Credentials', True)
         self.set_header('Access-Control-Allow-Methods', 'POST')
         self.set_header('Access-Control-Allow-Origin', origin)

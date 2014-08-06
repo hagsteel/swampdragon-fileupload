@@ -13,7 +13,7 @@ setup(
     description=("File upload handler for SwampDragon"),
     license="BSD",
     keywords="SwampDragon, file upload",
-    url="https://github.com/jonashagstedt/swampdragon",
+    url="https://github.com/jonashagstedt/swampdragon-fileupload",
     packages=find_packages(),
     long_description=read('README.md'),
     include_package_data=True,

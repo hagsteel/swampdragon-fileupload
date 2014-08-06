@@ -2,14 +2,11 @@ from swampdragon import route_handler
 from swampdragon.route_handler import BaseModelRouter
 from .serializers import WithFileSerializer, MultiFileSerializer
 from .models import WithFile, MultiFileModel
+from swampdragon_upload.route_handler import FileUploadHandler
 
 
-class FileUpload(route_handler.FileUploadHandler):
+class FileUpload(FileUploadHandler):
     route_name = '_sdfileupload'
-
-    @classmethod
-    def get_name(cls):
-        return cls.route_name
 
 
 class WithFileRouter(BaseModelRouter):

@@ -4,6 +4,10 @@ from swampdragon_upload.file_upload_handler import make_file_id, get_file_locati
 
 
 class FileUploadHandler(RequestHandler):
+    @classmethod
+    def get_name(cls):
+        return cls.route_name
+
     def _set_access_control(self):
         origin = self.request.headers['origin']
         orig_test = origin.split('/')[-1]

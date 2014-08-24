@@ -1,6 +1,6 @@
 var WithFileControllers = angular.module('WithFileControllers', []);
 
-WithFileControllers.controller('WithFileCtrl', ['$scope', 'dataService', '$upload', function($scope, dataService, $upload) {
+WithFileControllers.controller('WithFileCtrl', ['$scope', '$dragon', '$upload', function($scope, $dragon, $upload) {
     $scope.withfile = {};
     $scope.progress = 0;
 
@@ -12,7 +12,7 @@ WithFileControllers.controller('WithFileCtrl', ['$scope', 'dataService', '$uploa
         for (var i = 0; i < $files.length; i++) {
             var file = $files[i];
             $scope.upload = $upload.upload({
-                url: window.swampDragon.url + '/_sdfileupload/',
+                url: window.swamp_dargon_host + '/_sdfileupload/',
                 file: file
             }).progress(function(evt) {
                  $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
@@ -24,7 +24,7 @@ WithFileControllers.controller('WithFileCtrl', ['$scope', 'dataService', '$uploa
 
     $scope.save = function() {
         $scope.errors = null;
-        dataService.create('withfile-route', this.withfile).then(function(data) {
+        $dragon.data.create('withfile-route', this.withfile).then(function(data) {
             console.log(data);
         }).catch(function(response) {
             $scope.errors = response.errors;
@@ -33,7 +33,7 @@ WithFileControllers.controller('WithFileCtrl', ['$scope', 'dataService', '$uploa
 }]);
 
 
-WithFileControllers.controller('MultiFileCtrl', ['$scope', 'dataService', '$upload', function($scope, dataService, $upload) {
+WithFileControllers.controller('MultiFileCtrl', ['$scope', '$dragon', '$upload', function($scope, $dragon, $upload) {
     $scope.multifile = {files: []};
 
     $scope.progress = 0;
@@ -42,7 +42,7 @@ WithFileControllers.controller('MultiFileCtrl', ['$scope', 'dataService', '$uplo
         for (var i = 0; i < $files.length; i++) {
             var file = $files[i];
             $scope.upload = $upload.upload({
-                url: window.swampDragon.url + '/_sdfileupload/',
+                url: window.swamp_dargon_host + '/_sdfileupload/',
                 file: file
             }).progress(function(evt) {
                  $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
@@ -57,7 +57,7 @@ WithFileControllers.controller('MultiFileCtrl', ['$scope', 'dataService', '$uplo
 
     $scope.save = function() {
         var promise = null;
-        dataService.create('multifile-route', this.multifile).then(function(data) {
+        $dragon.data.create('multifile-route', this.multifile).then(function(data) {
         }).catch(function(errors) {
             console.log(errors);
         })
@@ -65,11 +65,11 @@ WithFileControllers.controller('MultiFileCtrl', ['$scope', 'dataService', '$uplo
 }]);
 
 
-WithFileControllers.controller('WithFileListCtrl', ['$scope', 'dataService', function($scope, dataService) {
+WithFileControllers.controller('WithFileListCtrl', ['$scope', '$dragon', function($scope, $dragon) {
     $scope.datasource = [];
 
-    $scope.$on('dragonReady', function() {
-        dataService.getList('withfile-route').then(function(response) {
+    $dragon.data.onReady(function() {
+        $dragon.data.getList('withfile-route').then(function(response) {
             $scope.datasource = response.data;
         }).catch(function(response) {
             console.log(response.errors);
@@ -78,11 +78,11 @@ WithFileControllers.controller('WithFileListCtrl', ['$scope', 'dataService', fun
 }]);
 
 
-WithFileControllers.controller('MultiFileListCtrl', ['$scope', 'dataService', function($scope, dataService) {
+WithFileControllers.controller('MultiFileListCtrl', ['$scope', '$dragon', function($scope, $dragon) {
     $scope.datasource = [];
 
-    $scope.$on('dragonReady', function() {
-        dataService.getList('multifile-route').then(function(response) {
+    $dragon.data.onReady(function() {
+        $dragon.data.getList('multifile-route').then(function(response) {
             $scope.datasource = response.data;
         }).catch(function(response) {
             console.log(response.errors);

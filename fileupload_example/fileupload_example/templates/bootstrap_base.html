@@ -78,12 +78,11 @@
 <script src="{{ STATIC_URL }}ng-file-upload/angular-file-upload-shim.min.js"></script>
 <script src="{{ STATIC_URL }}ng-file-upload/angular-file-upload.min.js"></script>
 
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/vendor/sockjs-0.3.2.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/datamapper.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/angular/services.js"></script>
-<!--<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/angular/directives.js"></script>-->
-<!--<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/fileupload.js"></script>-->
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/vendor/sockjs-0.3.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:9999/settings.js?v={% now 'u' %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon.js?v={% now 'u' %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/datamapper.js?v={% now 'u' %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/angular/services.js?v={% now 'u' %}"></script>
 
 <script type="text/javascript" src="{{ STATIC_URL }}js/app.js?v={% now 'U' %}"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/withfile-controllers.js"></script>
